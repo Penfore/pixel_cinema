@@ -1,43 +1,47 @@
-# ília - Code Challenge Flutter
-**English**
-##### Before we start ⚠️
-**Please create a fork from this repository**
+# Pixel Cinema
 
-## The Challenge:
-Using the API from [TheMovieDB](https://developers.themoviedb.org/3/getting-started/introduction), You must create an app that shows the featured movies in the Theaters, in a list.
+## Overview
 
-When the user touches in a movie, the app must show in a detail screen detailed information about it. You can choose which information should be shown.
+Welcome to the Pixel Cinema! This app provides a comprehensive experience for exploring featured movies. It uses TheMovieDB API to fetch and display movie information.
 
-## Extra features:
+## Features
 
-- In the main list of the movies, would be nice if the app could load more movies, as the scroll reaches the bottom section of the current page.
-- In the detail screen, would be nice to have an option to play the movie trailer.
-- In the main screen, would be nice to have the possibility to search by the movie title.
+- **Movie List**: Displays a list of featured movies in theaters.
+- **Movie Details**: When a movie is selected, detailed information about the movie is shown on a separate screen.
+- **Load More**: As the user scrolls to the bottom of the movie list, more movies are automatically loaded.
+- **Search**: Allows users to search for movies by title.
+- **Trailer**: On the detail screen, an option to play the movie trailer is available.
 
-In the end, a pull request must be created in the Github repo. As soon as you finish, please let us know.
+## Requirements
 
-We are available to answer any questions.
+- Dart
+- Flutter
+- TheMovieDB API key (register at [TheMovieDB](https://www.themoviedb.org/) to get your API key)
 
-***
+## Installation
 
-**Português**
-##### Antes de começar ⚠️
-**Por favor, crie um fork desse repositório**
+1. Clone the repository:
 
-## The Challenge:
-Utilizando a API do [TheMovieDB](https://developers.themoviedb.org/3/getting-started/introduction), Criar um app que mostre os filmes que estão em cartaz nos cinemas, em forma de lista.
+   ```sh
+   git clone https://github.com/Penfore/pixel_cinema
+   ```
 
-Ao tocar em um filme, mostrar em uma nova tela, informações detalhadas sobre ele, você pode escolher quais informações acha interessante mostrar.
+2. Navigate into the project directory:
 
-## Extras:
+    ```sh
+    cd pixel_cinema
+    ```
+3. Install dependencies:
 
-- Na tela de listagem dos filmes, ir carregando as próximas páginas ao dar scroll até o final da página atual
-- Na tela de detalhe, criar uma opçāo para tocar o vídeo do trailer do filme.
-- Na tela inicial, possibilitar a busca por título do filme
+    ```sh
+    flutter pub get
+    ```
+4. Configure TheMovieDB API key:
 
+    - Open lib/constants.dart and replace 'YOUR_API_KEY_HERE' with your actual API key.
 
-No final, um pull request deve ser criado no repositório do Github. Assim que terminar, por favor nos avise.
+5. Run the app
 
-Estamos à disposição, para tirar dúvidas.
-
-Happy coding! 🤓
+    ```sh
+    flutter run
+    ```
