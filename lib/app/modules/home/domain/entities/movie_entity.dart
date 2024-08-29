@@ -5,6 +5,7 @@ class MovieEntity {
     required this.overview,
     required this.posterPath,
     required this.releaseDate,
+    this.trailerKey,
   });
 
   factory MovieEntity.fromJson(Map<String, dynamic> json) => MovieEntity(
@@ -20,4 +21,5 @@ class MovieEntity {
   final String overview;
   final String posterPath;
   final DateTime releaseDate;
+  String? trailerKey;
 }

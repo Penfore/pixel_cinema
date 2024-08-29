@@ -15,7 +15,7 @@ Welcome to the Pixel Cinema! This app provides a comprehensive experience for ex
 ## Requirements
 
 - Dart
-- Flutter
+- Flutter - v3.24.1
 - TheMovieDB API key (register at [TheMovieDB](https://www.themoviedb.org/) to get your API key)
 
 ## Installation
@@ -38,7 +38,20 @@ Welcome to the Pixel Cinema! This app provides a comprehensive experience for ex
     ```
 4. Configure TheMovieDB API key:
 
-    - Open lib/constants.dart and replace 'YOUR_API_KEY_HERE' with your actual API key.
+    - Create and open .vscode/launch.json and add:
+        - `{
+    "configurations": [
+        {
+            "name": "Pixel Cinema",
+            "request": "launch",
+            "type": "dart",
+            "toolArgs": [
+                "--dart-define",
+                "API_KEY=${YOUR-KEY}"
+            ],
+        }
+    ]
+}`
 
 5. Run the app
 

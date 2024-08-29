@@ -15,6 +15,7 @@ dependencies:
   flutter_modular: ^6.3.4
   dio: ^5.5.0+1
   get: ^4.6.6
+  youtube_player_flutter: 9.0.3
 
 dev_dependencies:
   flutter_test:
