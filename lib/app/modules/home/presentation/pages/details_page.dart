@@ -79,13 +79,14 @@ class _DetailsPageState extends State<DetailsPage> {
                                   ),
                                 ),
                                 const SizedBox(height: 8),
-                                Text(
-                                  'Release Date: ${widget.movie.releaseDate.toString().split(' ')[0]}',
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.grey,
+                                if (widget.movie.releaseDate != null)
+                                  Text(
+                                    'Release Date: ${widget.movie.releaseDate.toString().split(' ')[0]}',
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.grey,
+                                    ),
                                   ),
-                                ),
                               ],
                             ),
                           ),

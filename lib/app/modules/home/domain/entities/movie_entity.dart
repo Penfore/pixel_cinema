@@ -13,13 +13,13 @@ class MovieEntity {
         title: json['title'],
         overview: json['overview'],
         posterPath: json['poster_path'],
-        releaseDate: DateTime.parse(json['release_date']),
+        releaseDate: json['release_date'].isEmpty ? null : DateTime.parse(json['release_date']),
       );
 
   final String id;
   final String title;
   final String overview;
-  final String posterPath;
-  final DateTime releaseDate;
+  final String? posterPath;
+  final DateTime? releaseDate;
   String? trailerKey;
 }
