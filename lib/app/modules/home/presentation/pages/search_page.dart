@@ -22,28 +22,35 @@ class _SearchPageState extends ModularInjector<SearchPage, HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: TextField(
-          controller: _searchController,
-          decoration: const InputDecoration(
-            hintText: 'Search for a movie...',
-            labelText: 'Search for a movie...',
-            hintStyle: TextStyle(color: Colors.white54),
+    return Obx(
+      () => Scaffold(
+        appBar: AppBar(
+          title: TextField(
+            controller: _searchController,
+            decoration: const InputDecoration(
+              hintText: 'Search for a movie...',
+              labelText: 'Search for a movie...',
+              hintStyle: TextStyle(color: Colors.white54),
+            ),
+            style: const TextStyle(color: Colors.black),
+            onSubmitted: (query) async {
+              await controller.searchMovies(query);
+            },
           ),
-          style: const TextStyle(color: Colors.black),
-          onSubmitted: (query) {
-            controller.searchMovies(query);
-          },
         ),
-      ),
-      body: Obx(
-        () => ListView.builder(
-          itemCount: controller.store.searchResults.length,
-          itemBuilder: (context, index) {
-            return MovieCard(movie: controller.store.searchResults[index], controller: controller);
-          },
-        ),
+        body: controller.store.isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : controller.store.searchResults.isEmpty
+                ? const Padding(
+                    padding: EdgeInsets.all(18),
+                    child: Text('Busca vazia'),
+                  )
+                : ListView.builder(
+                    itemCount: controller.store.searchResults.length,
+                    itemBuilder: (context, index) {
+                      return MovieCard(movie: controller.store.searchResults[index], controller: controller);
+                    },
+                  ),
       ),
     );
   }

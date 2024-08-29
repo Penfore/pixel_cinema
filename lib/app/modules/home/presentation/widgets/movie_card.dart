@@ -25,12 +25,13 @@ class MovieCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
-              'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-              fit: BoxFit.fitHeight,
-              width: double.infinity,
-              height: 200,
-            ),
+            if (movie.posterPath != null)
+              Image.network(
+                'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                fit: BoxFit.fitHeight,
+                width: double.infinity,
+                height: 200,
+              ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(

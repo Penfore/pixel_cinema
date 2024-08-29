@@ -3,6 +3,7 @@ import 'package:pixel_cinema/app/modules/home/data/datasources/movies_datasource
 abstract class MoviesRepository {
   Future<Map<String, dynamic>> fetchPage(int pageNumber);
   Future<Map<String, dynamic>> fetchVideo(String movieId);
+  Future<Map<String, dynamic>> searchMovies(String query);
 }
 
 class MoviesRepositoryImpl implements MoviesRepository {
@@ -22,5 +23,12 @@ class MoviesRepositoryImpl implements MoviesRepository {
     final videosObject = await datasource.fetchVideos(movieId);
 
     return videosObject;
+  }
+
+  @override
+  Future<Map<String, dynamic>> searchMovies(String query) async {
+    final pageObject = await datasource.searchMovies(query);
+
+    return pageObject;
   }
 }
