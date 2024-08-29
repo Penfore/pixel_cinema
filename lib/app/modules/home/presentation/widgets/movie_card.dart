@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pixel_cinema/app/modules/home/domain/entities/movie_entity.dart';
 import 'package:pixel_cinema/app/modules/home/presentation/controllers/home_controller.dart';
@@ -26,11 +27,17 @@ class MovieCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (movie.posterPath != null)
-              Image.network(
-                'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-                fit: BoxFit.fitHeight,
+              CachedNetworkImage(
+                imageUrl: 'https://image.tmdb.org/t/p/w500${movie.posterPath}',
                 width: double.infinity,
                 height: 200,
+                fit: BoxFit.fitHeight,
+                placeholder: (context, url) => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                errorWidget: (context, url, error) => const Center(
+                  child: Icon(Icons.error),
+                ),
               ),
             Padding(
               padding: const EdgeInsets.all(8.0),

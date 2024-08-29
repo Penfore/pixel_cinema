@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pixel_cinema/app/modules/home/domain/entities/movie_entity.dart';
@@ -60,12 +61,19 @@ class _DetailsPageState extends State<DetailsPage> {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image.network(
-                            'https://image.tmdb.org/t/p/w500${widget.movie.posterPath}',
-                            width: 100,
-                            height: 150,
-                            fit: BoxFit.cover,
-                          ),
+                          if (widget.movie.posterPath != null)
+                            CachedNetworkImage(
+                              imageUrl: 'https://image.tmdb.org/t/p/w500${widget.movie.posterPath}',
+                              width: 100,
+                              height: 150,
+                              fit: BoxFit.cover,
+                              placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                              errorWidget: (context, url, error) => const Center(
+                                child: Icon(Icons.error),
+                              ),
+                            ),
                           const SizedBox(width: 16),
                           Expanded(
                             child: Column(

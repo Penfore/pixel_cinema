@@ -16,6 +16,7 @@ dependencies:
   dio: ^5.5.0+1
   get: ^4.6.6
   youtube_player_flutter: 9.0.3
+  cached_network_image: 3.4.1
 
 dev_dependencies:
   flutter_test:
