@@ -4,6 +4,9 @@
 
 Welcome to the Pixel Cinema! This app provides a comprehensive experience for exploring featured movies. It uses TheMovieDB API to fetch and display movie information.
 
+
+The development of the app was based on Clean Architecture, ensuring a solid and scalable structure. However, I made some simplifications to make development more agile and dynamic. The presentation layer acts as a mini design system, aligning with the Viper design pattern to promote a clear separation between business logic and user interface. The app aims to follow SOLID principles.
+
 ## Features
 
 - **Movie List**: Displays a list of featured movies in theaters.
@@ -14,47 +17,34 @@ Welcome to the Pixel Cinema! This app provides a comprehensive experience for ex
 
 ## Requirements
 
-- Dart
-- Flutter - v3.24.1
+- [Flutter - v3.24.1](https://docs.flutter.dev/get-started/install)
 - TheMovieDB API key (register at [TheMovieDB](https://www.themoviedb.org/) to get your API key)
 
-## Installation
 
-1. Clone the repository:
-
-   ```sh
-   git clone https://github.com/Penfore/pixel_cinema
-   ```
-
-2. Navigate into the project directory:
-
-    ```sh
-    cd pixel_cinema
-    ```
-3. Install dependencies:
-
-    ```sh
-    flutter pub get
-    ```
-4. Configure TheMovieDB API key:
-
-    - Create and open .vscode/launch.json and add:
-        - `{
-    "configurations": [
+## Steps to tun
+- Clone the repository and enter the folder with your terminal;
+- If you are using [VSCode](https://code.visualstudio.com/), create a `.vscode` in the root of the application folder;
+- Inside the `.vscode` folder, create a `launch.json` file and fill with this information:
+  - `{
+   "configurations": [
         {
             "name": "Pixel Cinema",
             "request": "launch",
             "type": "dart",
             "toolArgs": [
                 "--dart-define",
-                "API_KEY=${YOUR-KEY}"
+                "API_KEY={YOUR-API-KEY}"
             ],
-        }
+        },
     ]
 }`
+  - Change `{YOUR-API-KEY}` for the key you got in the [TMDB keys section](https://www.themoviedb.org/settings/api);
+- Run `Flutter pub get` to install the dependencies;
+- Press F5 if using VSCode.
+  - NOTICE: If you are not using VSCode, do not forget to use the `--dart-define` variable passing you key to the `API_KEY` variable, otherwise the app will not work.
 
-5. Run the app
+### Enjoy :D
 
-    ```sh
-    flutter run
-    ```
+## License
+
+Software licensed under the [MIT license](https://opensource.org/licenses/MIT).
