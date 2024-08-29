@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:pixel_cinema/app/modules/home/domain/entities/movie_entity.dart';
+import 'package:pixel_cinema/app/modules/home/presentation/controllers/home_controller.dart';
 import 'package:pixel_cinema/app/modules/home/presentation/pages/details_page.dart';
 
 class MovieCard extends StatelessWidget {
   const MovieCard({
     super.key,
     required this.movie,
+    required this.controller,
   });
 
   final MovieEntity movie;
+  final HomeController controller;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => DetailsPage(movie: movie),
+      onTap: () async => Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => DetailsPage(movie: movie, controller: controller),
       )),
       child: Card(
         elevation: 4,

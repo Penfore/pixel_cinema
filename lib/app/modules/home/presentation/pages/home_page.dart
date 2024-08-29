@@ -22,21 +22,25 @@ class _HomePageState extends ModularInjector<HomePage, HomeController> {
           title: const Text('Pixel Cinema'),
           actions: [
             IconButton(
-                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const SearchPage(),
-                    )),
-                icon: const Icon(Icons.search_rounded)),
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SearchPage())),
+              icon: const Icon(Icons.search_rounded),
+            ),
           ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: ListView.builder(
-            itemCount: controller.store.movies.length,
-            itemBuilder: (context, index) {
-              return MovieCard(movie: controller.store.movies[index]);
-            },
-          ),
-        ),
+        body: controller.store.isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: NotificationListener<ScrollNotification>(
+                  onNotification: (ScrollNotification scrollInfo) => controller.onScrollFetch(scrollInfo),
+                  child: ListView.builder(
+                    itemCount: controller.store.movies.length,
+                    itemBuilder: (context, index) {
+                      return MovieCard(movie: controller.store.movies[index], controller: controller);
+                    },
+                  ),
+                ),
+              ),
       ),
     );
   }

@@ -41,7 +41,7 @@ class _SearchPageState extends ModularInjector<SearchPage, HomeController> {
         () => ListView.builder(
           itemCount: controller.store.searchResults.length,
           itemBuilder: (context, index) {
-            return MovieCard(movie: controller.store.searchResults[index]);
+            return MovieCard(movie: controller.store.searchResults[index], controller: controller);
           },
         ),
       ),
