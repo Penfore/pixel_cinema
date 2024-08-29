@@ -3,6 +3,7 @@ import 'package:pixel_cinema/app/core/presentation/controllers/page_lifecycle_co
 import 'package:pixel_cinema/app/modules/home/domain/entities/movie_entity.dart';
 import 'package:pixel_cinema/app/modules/home/domain/use_cases/fetch_movies_from_theatres_use_case.dart';
 import 'package:pixel_cinema/app/modules/home/domain/use_cases/fetch_video_use_case.dart';
+import 'package:pixel_cinema/app/modules/home/domain/use_cases/search_movies_use_case.dart';
 import 'package:pixel_cinema/app/modules/home/presentation/stores/home_store.dart';
 
 class HomeController extends PageLifeCycleController {
@@ -10,12 +11,14 @@ class HomeController extends PageLifeCycleController {
     required this.store,
     required this.fetchMoviesFromTheatresUseCase,
     required this.fetchVideoUseCase,
+    required this.searchMoviesUseCase,
   });
 
   @override
   final HomeStore store;
   final FetchMoviesFromTheatresUseCase fetchMoviesFromTheatresUseCase;
   final FetchVideoUseCase fetchVideoUseCase;
+  final SearchMoviesUseCase searchMoviesUseCase;
 
   @override
   Future<void> onReady() async {
@@ -63,9 +66,17 @@ class HomeController extends PageLifeCycleController {
   }
 
   Future<void> searchMovies(String query) async {
-    // TODO(fulvioleo): change for a real implementation of a search
-    store.searchResults = store.movies.where((movie) {
-      return movie.title.toLowerCase().contains(query.toLowerCase());
-    }).toList();
+    try {
+      store.loading();
+      final page = await searchMoviesUseCase.call(query: query.toLowerCase());
+      store.searchResults = page.movies;
+      final moviesToFetch = store.searchResults.where((movie) => movie.trailerKey == null).toList();
+      for (final movie in moviesToFetch) {
+        await fetchVideo(movie: movie);
+      }
+      store.completed();
+    } on Exception catch (e) {
+      store.error = e;
+    }
   }
 }
