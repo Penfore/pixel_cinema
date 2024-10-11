@@ -5,7 +5,7 @@
 Welcome to the Pixel Cinema! This app provides a comprehensive experience for exploring featured movies. It uses TheMovieDB API to fetch and display movie information.
 
 
-The development of the app was based on Clean Architecture, ensuring a solid and scalable structure. However, I made some simplifications to make development more agile and dynamic. The presentation layer acts as a mini design system, aligning with the Viper design pattern to promote a clear separation between business logic and user interface. The app aims to follow SOLID principles.
+The development of the app was based on Clean Architecture, ensuring a solid and scalable structure. However, I made some simplifications to make development more agile and dynamic. The presentation layer acts as a mini design system, aligning with the VIP design pattern to promote a clear separation between business logic and user interface. The app aims to follow SOLID principles.
 
 ## Features
 
